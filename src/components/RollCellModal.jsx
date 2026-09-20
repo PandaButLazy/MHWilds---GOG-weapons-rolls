@@ -1,23 +1,46 @@
 import { useEffect, useState } from 'react'
-import { bonusSkills, groupSkills } from '../data/skills'
+import { bonusSkills, groupSkills, isValidSkillValue } from '../data/skills'
 import { SkillInput } from './SkillInput'
 
 export function RollCellModal({ weaponName, element, occurrence, initialValue, onSave, onClear, onClose }) {
   const [groupSkill, setGroupSkill] = useState(initialValue?.groupSkill ?? '')
   const [bonusSkill, setBonusSkill] = useState(initialValue?.bonusSkill ?? '')
+  const [errors, setErrors] = useState({})
 
   useEffect(() => {
     setGroupSkill(initialValue?.groupSkill ?? '')
     setBonusSkill(initialValue?.bonusSkill ?? '')
+    setErrors({})
   }, [initialValue])
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (!groupSkill && !bonusSkill) {
+    const trimmedBonus = bonusSkill.trim()
+    const trimmedGroup = groupSkill.trim()
+
+    if (!trimmedBonus && !trimmedGroup) {
       onClear()
       return
     }
-    onSave({ groupSkill, bonusSkill })
+
+    const nextErrors = {}
+    if (!trimmedBonus) {
+      nextErrors.bonusSkill = 'Set Bonus Skill requis'
+    } else if (!isValidSkillValue(trimmedBonus, bonusSkills)) {
+      nextErrors.bonusSkill = 'Skill inconnu'
+    }
+    if (!trimmedGroup) {
+      nextErrors.groupSkill = 'Group Skill requis'
+    } else if (!isValidSkillValue(trimmedGroup, groupSkills)) {
+      nextErrors.groupSkill = 'Skill inconnu'
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors)
+      return
+    }
+
+    onSave({ groupSkill: trimmedGroup, bonusSkill: trimmedBonus })
   }
 
   return (
@@ -33,9 +56,14 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
               id="modal-bonus-skills-list"
               skills={bonusSkills}
               value={bonusSkill}
-              onChange={setBonusSkill}
+              onChange={(value) => {
+                setBonusSkill(value)
+                setErrors((prev) => ({ ...prev, bonusSkill: undefined }))
+              }}
               placeholder="Rechercher ou choisir..."
+              invalid={Boolean(errors.bonusSkill)}
             />
+            {errors.bonusSkill && <span className="field-error">{errors.bonusSkill}</span>}
           </label>
           <label>
             Group Skill
@@ -43,9 +71,14 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
               id="modal-group-skills-list"
               skills={groupSkills}
               value={groupSkill}
-              onChange={setGroupSkill}
+              onChange={(value) => {
+                setGroupSkill(value)
+                setErrors((prev) => ({ ...prev, groupSkill: undefined }))
+              }}
               placeholder="Rechercher ou choisir..."
+              invalid={Boolean(errors.groupSkill)}
             />
+            {errors.groupSkill && <span className="field-error">{errors.groupSkill}</span>}
           </label>
           <div className="modal-actions">
             <button type="button" className="btn-secondary" onClick={onClear}>

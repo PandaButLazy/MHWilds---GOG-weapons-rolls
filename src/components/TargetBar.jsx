@@ -1,10 +1,11 @@
-import { bonusSkills, groupSkills, MAX_OCCURRENCE_COUNT, MIN_OCCURRENCE_COUNT } from '../data/skills'
+import {
+  bonusSkills,
+  groupSkills,
+  isValidSkillValue,
+  MAX_OCCURRENCE_COUNT,
+  MIN_OCCURRENCE_COUNT,
+} from '../data/skills'
 import { SkillInput } from './SkillInput'
-
-function isValidSkillValue(value, skills) {
-  if (!value) return true
-  return skills.some((skill) => skill.name === value)
-}
 
 function clampOccurrenceCount(value) {
   const parsed = Number(value)
