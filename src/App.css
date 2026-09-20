@@ -1,0 +1,189 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--bg-alt);
+  border-right: 1px solid var(--border);
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  margin: 4px 8px 16px;
+}
+
+.sidebar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar-link:hover {
+  background: var(--accent-bg);
+}
+
+.sidebar-link.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-x: auto;
+}
+
+.home {
+  max-width: 480px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.rolls-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 900px;
+}
+
+.rolls-table th,
+.rolls-table td {
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.rolls-table thead th {
+  background: var(--bg-alt);
+  position: sticky;
+  top: 0;
+}
+
+.rolls-table tbody th {
+  background: var(--bg-alt);
+}
+
+.rolls-table td {
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.rolls-table td:hover {
+  background: var(--accent-bg);
+}
+
+.cell-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.25;
+}
+
+.cell-group {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.cell-bonus {
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.cell-placeholder {
+  color: var(--border);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+}
+
+.modal h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.modal select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+}
