@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 
 const STORAGE_KEY = 'gog-rerolls-v1'
+const TARGETS_STORAGE_KEY = 'gog-rerolls-targets-v1'
 
-function loadAll() {
+function loadJSON(key) {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const raw = localStorage.getItem(key)
     return raw ? JSON.parse(raw) : {}
   } catch {
     return {}
@@ -16,11 +17,16 @@ function cellKey(weaponId, element, occurrence) {
 }
 
 export function useRollData() {
-  const [data, setData] = useState(loadAll)
+  const [data, setData] = useState(() => loadJSON(STORAGE_KEY))
+  const [targets, setTargets] = useState(() => loadJSON(TARGETS_STORAGE_KEY))
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
   }, [data])
+
+  useEffect(() => {
+    localStorage.setItem(TARGETS_STORAGE_KEY, JSON.stringify(targets))
+  }, [targets])
 
   const getCell = useCallback(
     (weaponId, element, occurrence) => data[cellKey(weaponId, element, occurrence)] || null,
@@ -39,5 +45,14 @@ export function useRollData() {
     })
   }, [])
 
-  return { getCell, setCell }
+  const getTarget = useCallback(
+    (weaponId) => targets[weaponId] || { groupSkill: '', bonusSkill: '' },
+    [targets],
+  )
+
+  const setTarget = useCallback((weaponId, value) => {
+    setTargets((prev) => ({ ...prev, [weaponId]: value }))
+  }, [])
+
+  return { getCell, setCell, getTarget, setTarget }
 }

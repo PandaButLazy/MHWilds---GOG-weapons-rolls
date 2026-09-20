@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { bonusSkills, groupSkills } from '../data/skills'
+import { SkillInput } from './SkillInput'
 
 export function RollCellModal({ weaponName, element, occurrence, initialValue, onSave, onClear, onClose }) {
   const [groupSkill, setGroupSkill] = useState(initialValue?.groupSkill ?? '')
@@ -28,33 +29,23 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
         <form onSubmit={handleSubmit}>
           <label>
             Group Skill
-            <input
-              type="text"
-              list="group-skills-list"
+            <SkillInput
+              id="modal-group-skills-list"
+              skills={groupSkills}
               value={groupSkill}
-              onChange={(e) => setGroupSkill(e.target.value)}
+              onChange={setGroupSkill}
               placeholder="Rechercher ou choisir..."
             />
-            <datalist id="group-skills-list">
-              {groupSkills.map((skill) => (
-                <option key={skill.name} value={skill.name} />
-              ))}
-            </datalist>
           </label>
           <label>
             Bonus Skill
-            <input
-              type="text"
-              list="bonus-skills-list"
+            <SkillInput
+              id="modal-bonus-skills-list"
+              skills={bonusSkills}
               value={bonusSkill}
-              onChange={(e) => setBonusSkill(e.target.value)}
+              onChange={setBonusSkill}
               placeholder="Rechercher ou choisir..."
             />
-            <datalist id="bonus-skills-list">
-              {bonusSkills.map((skill) => (
-                <option key={skill.name} value={skill.name} />
-              ))}
-            </datalist>
           </label>
           <div className="modal-actions">
             <button type="button" className="btn-secondary" onClick={onClear}>
