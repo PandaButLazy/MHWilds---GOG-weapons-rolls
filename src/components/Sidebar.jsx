@@ -4,7 +4,10 @@ import { weaponTypes } from '../data/weaponTypes'
 export function Sidebar() {
   return (
     <nav className="sidebar">
-      <h1 className="sidebar-title">Gogmazios Rerolls</h1>
+      <h1 className="sidebar-title">
+        <img className="app-logo" src="/gogmazios-icon.png" alt="" width={36} height={36} />
+        Gogmazios Rerolls
+      </h1>
       <ul className="sidebar-list">
         {weaponTypes.map((weapon) => (
           <li key={weapon.id}>
