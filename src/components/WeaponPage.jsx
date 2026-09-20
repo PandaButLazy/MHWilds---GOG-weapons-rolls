@@ -62,7 +62,7 @@ export function WeaponPage() {
             />
           </label>
           <label>
-            Bonus Skill
+            Set Bonus Skill
             <SkillInput
               id="target-bonus-skills-list"
               skills={bonusSkills}

@@ -38,7 +38,7 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
             />
           </label>
           <label>
-            Bonus Skill
+            Set Bonus Skill
             <SkillInput
               id="modal-bonus-skills-list"
               skills={bonusSkills}
