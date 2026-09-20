@@ -6,10 +6,41 @@
 .sidebar {
   width: 220px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--bg-alt);
   border-right: 1px solid var(--border);
   padding: 16px 12px;
   overflow-y: auto;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 4px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.import-export {
+  display: flex;
+  gap: 8px;
+}
+
+.import-export .btn-secondary {
+  flex: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .sidebar-title {
@@ -76,6 +107,94 @@
 
 .home {
   max-width: 480px;
+}
+
+.page-intro {
+  max-width: 640px;
+  margin: 4px 0 16px;
+  color: var(--text);
+}
+
+.inventory-table,
+.devices-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.inventory-table th,
+.inventory-table td,
+.devices-table th,
+.devices-table td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.inventory-table thead th,
+.devices-table thead th {
+  background: var(--bg-alt);
+}
+
+.inventory-table tbody tr {
+  cursor: pointer;
+}
+
+.inventory-table tbody tr:hover {
+  background: var(--accent-bg);
+}
+
+.inventory-table td img.cell-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.inventory-empty {
+  text-align: center;
+  color: var(--text);
+  opacity: 0.7;
+  cursor: default;
+}
+
+.device-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.device-count input {
+  width: 70px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+  text-align: center;
+}
+
+.device-count .btn-secondary {
+  padding: 4px 10px;
+}
+
+.devices-cost-note {
+  margin-top: 24px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+  max-width: 640px;
+}
+
+.devices-cost-note h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.devices-cost-note p {
+  margin: 0;
+  font-size: 13px;
 }
 
 .target-panel {

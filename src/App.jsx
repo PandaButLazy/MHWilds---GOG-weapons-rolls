@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { InventoryPage } from './components/InventoryPage'
 import { Sidebar } from './components/Sidebar'
+import { TarredDevicesPage } from './components/TarredDevicesPage'
 import { WeaponPage } from './components/WeaponPage'
 import './App.css'
 
@@ -20,6 +22,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/weapon/:weaponId" element={<WeaponPage />} />
+          <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/tarred-devices" element={<TarredDevicesPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

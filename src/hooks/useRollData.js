@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import { DEFAULT_OCCURRENCE_COUNT } from '../data/skills'
-
-const STORAGE_KEY = 'gog-rerolls-v1'
-const TARGETS_STORAGE_KEY = 'gog-rerolls-targets-v1'
-const OCCURRENCE_COUNTS_STORAGE_KEY = 'gog-rerolls-occurrence-counts-v1'
+import {
+  OCCURRENCE_COUNTS_STORAGE_KEY,
+  ROLLS_STORAGE_KEY as STORAGE_KEY,
+  TARGETS_STORAGE_KEY,
+} from '../data/storageKeys'
 
 function loadJSON(key) {
   try {
