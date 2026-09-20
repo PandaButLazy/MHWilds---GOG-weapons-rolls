@@ -152,6 +152,7 @@
   text-align: left;
 }
 
+.modal input,
 .modal select {
   padding: 6px 8px;
   border-radius: 6px;

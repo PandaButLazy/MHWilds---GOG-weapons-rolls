@@ -28,25 +28,33 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
         <form onSubmit={handleSubmit}>
           <label>
             Group Skill
-            <select value={groupSkill} onChange={(e) => setGroupSkill(e.target.value)}>
-              <option value="">—</option>
+            <input
+              type="text"
+              list="group-skills-list"
+              value={groupSkill}
+              onChange={(e) => setGroupSkill(e.target.value)}
+              placeholder="Rechercher ou choisir..."
+            />
+            <datalist id="group-skills-list">
               {groupSkills.map((skill) => (
-                <option key={skill.name} value={skill.name}>
-                  {skill.name}
-                </option>
+                <option key={skill.name} value={skill.name} />
               ))}
-            </select>
+            </datalist>
           </label>
           <label>
             Bonus Skill
-            <select value={bonusSkill} onChange={(e) => setBonusSkill(e.target.value)}>
-              <option value="">—</option>
+            <input
+              type="text"
+              list="bonus-skills-list"
+              value={bonusSkill}
+              onChange={(e) => setBonusSkill(e.target.value)}
+              placeholder="Rechercher ou choisir..."
+            />
+            <datalist id="bonus-skills-list">
               {bonusSkills.map((skill) => (
-                <option key={skill.name} value={skill.name}>
-                  {skill.name}
-                </option>
+                <option key={skill.name} value={skill.name} />
               ))}
-            </select>
+            </datalist>
           </label>
           <div className="modal-actions">
             <button type="button" className="btn-secondary" onClick={onClear}>
