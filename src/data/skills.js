@@ -1,7 +1,15 @@
 import weaponSkills from '../../weapon_skills.json'
+import skillCategoriesData from '../../skill_categories.json'
 
 export const groupSkills = weaponSkills.armor_skills
 export const bonusSkills = weaponSkills.attack_skills
+
+const skillCategoriesByName = new Map(
+  skillCategoriesData.skills.map((category) => [category.category, category]),
+)
+
+export const groupSkillCategory = skillCategoriesByName.get('Group Skills') ?? null
+export const bonusSkillCategory = skillCategoriesByName.get('Set Bonus Skills') ?? null
 
 export const DEFAULT_OCCURRENCE_COUNT = 20
 export const MIN_OCCURRENCE_COUNT = 1

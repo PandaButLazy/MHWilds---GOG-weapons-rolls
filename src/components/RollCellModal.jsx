@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { bonusSkills, groupSkills, isValidSkillValue } from '../data/skills'
+import { bonusSkillCategory, bonusSkills, groupSkillCategory, groupSkills, isValidSkillValue } from '../data/skills'
+import { FieldLabel } from './FieldLabel'
 import { SkillInput } from './SkillInput'
 
 export function RollCellModal({ weaponName, element, occurrence, initialValue, onSave, onClear, onClose }) {
@@ -51,7 +52,7 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
         </h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Set Bonus Skill
+            <FieldLabel iconUrl={bonusSkillCategory?.image_url}>Set Bonus Skill</FieldLabel>
             <SkillInput
               id="modal-bonus-skills-list"
               skills={bonusSkills}
@@ -66,7 +67,7 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
             {errors.bonusSkill && <span className="field-error">{errors.bonusSkill}</span>}
           </label>
           <label>
-            Group Skill
+            <FieldLabel iconUrl={groupSkillCategory?.image_url}>Group Skill</FieldLabel>
             <SkillInput
               id="modal-group-skills-list"
               skills={groupSkills}

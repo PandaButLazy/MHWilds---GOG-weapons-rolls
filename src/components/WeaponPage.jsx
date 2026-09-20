@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { elements } from '../data/elements'
+import { bonusSkillCategory, groupSkillCategory } from '../data/skills'
 import { weaponTypes } from '../data/weaponTypes'
 import { useRollData } from '../hooks/useRollData'
 import { RollCellModal } from './RollCellModal'
@@ -98,8 +99,18 @@ export function WeaponPage() {
                     >
                       {value ? (
                         <div className="cell-content">
-                          <span className="cell-bonus">{value.bonusSkill || '—'}</span>
-                          <span className="cell-group">{value.groupSkill || '—'}</span>
+                          <span className="cell-bonus">
+                            {bonusSkillCategory?.image_url && (
+                              <img className="cell-icon" src={bonusSkillCategory.image_url} alt="" />
+                            )}
+                            {value.bonusSkill || '—'}
+                          </span>
+                          <span className="cell-group">
+                            {groupSkillCategory?.image_url && (
+                              <img className="cell-icon" src={groupSkillCategory.image_url} alt="" />
+                            )}
+                            {value.groupSkill || '—'}
+                          </span>
                         </div>
                       ) : (
                         <span className="cell-placeholder">+</span>

@@ -1,10 +1,13 @@
 import {
+  bonusSkillCategory,
   bonusSkills,
+  groupSkillCategory,
   groupSkills,
   isValidSkillValue,
   MAX_OCCURRENCE_COUNT,
   MIN_OCCURRENCE_COUNT,
 } from '../data/skills'
+import { FieldLabel } from './FieldLabel'
 import { SkillInput } from './SkillInput'
 
 function clampOccurrenceCount(value) {
@@ -21,7 +24,7 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
     <div className="target-panel">
       <div className="target-fields">
         <label>
-          Set Bonus Skill
+          <FieldLabel iconUrl={bonusSkillCategory?.image_url}>Set Bonus Skill</FieldLabel>
           <SkillInput
             id="target-bonus-skills-list"
             skills={bonusSkills}
@@ -33,7 +36,7 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
           {!isBonusTargetValid && <span className="field-error">Skill inconnu</span>}
         </label>
         <label>
-          Group Skill
+          <FieldLabel iconUrl={groupSkillCategory?.image_url}>Group Skill</FieldLabel>
           <SkillInput
             id="target-group-skills-list"
             skills={groupSkills}
