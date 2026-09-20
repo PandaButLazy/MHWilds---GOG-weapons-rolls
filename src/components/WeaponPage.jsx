@@ -7,6 +7,11 @@ import { useRollData } from '../hooks/useRollData'
 import { RollCellModal } from './RollCellModal'
 import { SkillInput } from './SkillInput'
 
+function isValidSkillValue(value, skills) {
+  if (!value) return true
+  return skills.some((skill) => skill.name === value)
+}
+
 function getMatchClass(value, target) {
   if (!value) return null
   const hasGroupTarget = Boolean(target.groupSkill)
@@ -25,7 +30,7 @@ function getMatchClass(value, target) {
 
 export function WeaponPage() {
   const { weaponId } = useParams()
-  const { getCell, setCell, getTarget, setTarget } = useRollData()
+  const { getCell, setCell, getTarget, setTarget, clearWeapon } = useRollData()
   const [activeCell, setActiveCell] = useState(null)
 
   const weapon = useMemo(
@@ -43,6 +48,16 @@ export function WeaponPage() {
   }
 
   const target = getTarget(weapon.id)
+  const isGroupTargetValid = isValidSkillValue(target.groupSkill, groupSkills)
+  const isBonusTargetValid = isValidSkillValue(target.bonusSkill, bonusSkills)
+
+  function handleClearAll() {
+    const confirmed = window.confirm(
+      `Effacer toutes les données de rerolls pour "${weapon.name}" ? Cette action est irréversible.`,
+    )
+    if (!confirmed) return
+    clearWeapon(weapon.id)
+  }
 
   return (
     <div className="weapon-page">
@@ -59,7 +74,9 @@ export function WeaponPage() {
               value={target.groupSkill}
               onChange={(value) => setTarget(weapon.id, { ...target, groupSkill: value })}
               placeholder="Group skill cible..."
+              invalid={!isGroupTargetValid}
             />
+            {!isGroupTargetValid && <span className="field-error">Skill inconnu</span>}
           </label>
           <label>
             Set Bonus Skill
@@ -69,12 +86,10 @@ export function WeaponPage() {
               value={target.bonusSkill}
               onChange={(value) => setTarget(weapon.id, { ...target, bonusSkill: value })}
               placeholder="Bonus skill cible..."
+              invalid={!isBonusTargetValid}
             />
+            {!isBonusTargetValid && <span className="field-error">Skill inconnu</span>}
           </label>
-        </div>
-        <div className="target-legend">
-          <span className="legend-swatch cell-match-partial" /> un skill trouvé
-          <span className="legend-swatch cell-match-full" /> les deux skills trouvés
         </div>
       </div>
 
@@ -119,6 +134,12 @@ export function WeaponPage() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="danger-zone">
+        <button type="button" className="btn-danger" onClick={handleClearAll}>
+          Tout effacer pour cette arme
+        </button>
       </div>
 
       {activeCell && (

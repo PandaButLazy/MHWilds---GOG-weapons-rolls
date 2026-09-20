@@ -1,4 +1,4 @@
-export function SkillInput({ id, skills, value, onChange, placeholder }) {
+export function SkillInput({ id, skills, value, onChange, placeholder, invalid }) {
   return (
     <>
       <input
@@ -7,6 +7,8 @@ export function SkillInput({ id, skills, value, onChange, placeholder }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        className={invalid ? 'input-invalid' : undefined}
+        aria-invalid={invalid || undefined}
       />
       <datalist id={id}>
         {skills.map((skill) => (

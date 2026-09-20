@@ -54,5 +54,21 @@ export function useRollData() {
     setTargets((prev) => ({ ...prev, [weaponId]: value }))
   }, [])
 
-  return { getCell, setCell, getTarget, setTarget }
+  const clearWeapon = useCallback((weaponId) => {
+    const prefix = `${weaponId}::`
+    setData((prev) => {
+      const next = {}
+      for (const key of Object.keys(prev)) {
+        if (!key.startsWith(prefix)) next[key] = prev[key]
+      }
+      return next
+    })
+    setTargets((prev) => {
+      const next = { ...prev }
+      delete next[weaponId]
+      return next
+    })
+  }, [])
+
+  return { getCell, setCell, getTarget, setTarget, clearWeapon }
 }
