@@ -1,0 +1,174 @@
+{
+  "attack_skills": [
+    {
+      "name": "Gogmapocalypse",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Gogmapocalypse"
+    },
+    {
+      "name": "Doshaguma's Might",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Doshaguma%27s_Might"
+    },
+    {
+      "name": "Rathalos's Flare",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Rathalos%27s_Flare"
+    },
+    {
+      "name": "Fulgur Anjanath's Will",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Fulgur_Anjanath%27s_Will"
+    },
+    {
+      "name": "Gravios's Protection",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Gravios%27s_Protection"
+    },
+    {
+      "name": "Blangonga's Spirit",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Blangonga%27s_Spirit"
+    },
+    {
+      "name": "Ebony Odogaron's Power",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Ebony_Odogaron%27s_Power"
+    },
+    {
+      "name": "Xu Wu's Vigor",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Xu_Wu%27s_Vigor"
+    },
+    {
+      "name": "Uth Duna's Cover",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Uth_Duna%27s_Cover"
+    },
+    {
+      "name": "Rey Dau's Voltage",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Rey_Dau%27s_Voltage"
+    },
+    {
+      "name": "Nu Udra's Mutiny",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Nu_Udra%27s_Mutiny"
+    },
+    {
+      "name": "Jin Dahaad's Revolt",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Jin_Dahaad%27s_Revolt"
+    },
+    {
+      "name": "Gore Magala's Tyranny",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Gore_Magala%27s_Tyranny"
+    },
+    {
+      "name": "Guardian Arkveld's Vitality",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Guardian_Arkveld%27s_Vitality"
+    },
+    {
+      "name": "Arkveld's Hunger",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Arkveld%27s_Hunger"
+    },
+    {
+      "name": "Blossomdance Prayer",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Blossomdance_Prayer"
+    },
+    {
+      "name": "Flamefete Prayer",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Flamefete_Prayer"
+    },
+    {
+      "name": "Dreamspell Prayer",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Dreamspell_Prayer"
+    },
+    {
+      "name": "Leviathan's Fury",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Leviathan%27s_Fury"
+    },
+    {
+      "name": "Mizutsune's Prowess",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Mizutsune%27s_Prowess"
+    },
+    {
+      "name": "Omega Resonance",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Omega_Resonance"
+    },
+    {
+      "name": "Seregios's Tenacity",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Seregios%27s_Tenacity"
+    },
+    {
+      "name": "Soul of the Dark Knight",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Soul_of_the_Dark_Knight"
+    },
+    {
+      "name": "Zoh Shia's Pulse",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Zoh_Shia%27s_Pulse"
+    },
+    {
+      "name": "Lumenhymn Prayer",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Lumenhymn_Prayer"
+    }
+  ],
+  "armor_skills": [
+    {
+      "name": "Neopteron Alert",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Neopteron_Alert"
+    },
+    {
+      "name": "Neopteron Camouflage",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Neopteron_Camouflage"
+    },
+    {
+      "name": "Scaling Prowess",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Scaling_Prowess"
+    },
+    {
+      "name": "Scale Layering",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Scale_Layering"
+    },
+    {
+      "name": "Flexible Leathercraft",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Flexible_Leathercraft"
+    },
+    {
+      "name": "Buttery Leathercraft",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Buttery_Leathercraft"
+    },
+    {
+      "name": "Fortifying Pelt",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Fortifying_Pelt"
+    },
+    {
+      "name": "Alluring Pelt",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Alluring_Pelt"
+    },
+    {
+      "name": "Lord's Favor",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Lord%27s_Favor"
+    },
+    {
+      "name": "Lord's Fury",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Lord%27s_Fury"
+    },
+    {
+      "name": "Guardian's Pulse",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Guardian%27s_Pulse"
+    },
+    {
+      "name": "Guardian's Protection",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Guardian%27s_Protection"
+    },
+    {
+      "name": "Imparted Wisdom",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Imparted_Wisdom"
+    },
+    {
+      "name": "Lord's Soul",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Lord%27s_Soul"
+    },
+    {
+      "name": "Festival Spirit",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Festival_Spirit"
+    },
+    {
+      "name": "Glory's Favor",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Glory%27s_Favor"
+    },
+    {
+      "name": "Master of the Fist",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Master_of_the_Fist"
+    }
+  ]
+}
