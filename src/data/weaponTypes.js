@@ -1,0 +1,16 @@
+export const weaponTypes = [
+  { id: 'great-sword', name: 'Great Sword' },
+  { id: 'long-sword', name: 'Long Sword' },
+  { id: 'sword-and-shield', name: 'Sword & Shield' },
+  { id: 'dual-blades', name: 'Dual Blades' },
+  { id: 'hammer', name: 'Hammer' },
+  { id: 'hunting-horn', name: 'Hunting Horn' },
+  { id: 'lance', name: 'Lance' },
+  { id: 'gunlance', name: 'Gunlance' },
+  { id: 'switch-axe', name: 'Switch Axe' },
+  { id: 'charge-blade', name: 'Charge Blade' },
+  { id: 'insect-glaive', name: 'Insect Glaive' },
+  { id: 'bow', name: 'Bow' },
+  { id: 'light-bowgun', name: 'Light Bowgun' },
+  { id: 'heavy-bowgun', name: 'Heavy Bowgun' },
+]
