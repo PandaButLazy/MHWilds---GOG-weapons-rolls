@@ -67,18 +67,6 @@ export function WeaponPage() {
         <h3>Combinaison recherchée</h3>
         <div className="target-fields">
           <label>
-            Group Skill
-            <SkillInput
-              id="target-group-skills-list"
-              skills={groupSkills}
-              value={target.groupSkill}
-              onChange={(value) => setTarget(weapon.id, { ...target, groupSkill: value })}
-              placeholder="Group skill cible..."
-              invalid={!isGroupTargetValid}
-            />
-            {!isGroupTargetValid && <span className="field-error">Skill inconnu</span>}
-          </label>
-          <label>
             Set Bonus Skill
             <SkillInput
               id="target-bonus-skills-list"
@@ -89,6 +77,18 @@ export function WeaponPage() {
               invalid={!isBonusTargetValid}
             />
             {!isBonusTargetValid && <span className="field-error">Skill inconnu</span>}
+          </label>
+          <label>
+            Group Skill
+            <SkillInput
+              id="target-group-skills-list"
+              skills={groupSkills}
+              value={target.groupSkill}
+              onChange={(value) => setTarget(weapon.id, { ...target, groupSkill: value })}
+              placeholder="Group skill cible..."
+              invalid={!isGroupTargetValid}
+            />
+            {!isGroupTargetValid && <span className="field-error">Skill inconnu</span>}
           </label>
         </div>
       </div>
@@ -121,8 +121,8 @@ export function WeaponPage() {
                     >
                       {value ? (
                         <div className="cell-content">
-                          <span className="cell-group">{value.groupSkill || '—'}</span>
                           <span className="cell-bonus">{value.bonusSkill || '—'}</span>
+                          <span className="cell-group">{value.groupSkill || '—'}</span>
                         </div>
                       ) : (
                         <span className="cell-placeholder">+</span>

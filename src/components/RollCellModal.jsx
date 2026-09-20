@@ -28,22 +28,22 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
         </h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Group Skill
-            <SkillInput
-              id="modal-group-skills-list"
-              skills={groupSkills}
-              value={groupSkill}
-              onChange={setGroupSkill}
-              placeholder="Rechercher ou choisir..."
-            />
-          </label>
-          <label>
             Set Bonus Skill
             <SkillInput
               id="modal-bonus-skills-list"
               skills={bonusSkills}
               value={bonusSkill}
               onChange={setBonusSkill}
+              placeholder="Rechercher ou choisir..."
+            />
+          </label>
+          <label>
+            Group Skill
+            <SkillInput
+              id="modal-group-skills-list"
+              skills={groupSkills}
+              value={groupSkill}
+              onChange={setGroupSkill}
               placeholder="Rechercher ou choisir..."
             />
           </label>
