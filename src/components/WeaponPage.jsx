@@ -1,16 +1,10 @@
 import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { elements } from '../data/elements'
-import { bonusSkills, groupSkills, MAX_ROLLS } from '../data/skills'
 import { weaponTypes } from '../data/weaponTypes'
 import { useRollData } from '../hooks/useRollData'
 import { RollCellModal } from './RollCellModal'
-import { SkillInput } from './SkillInput'
-
-function isValidSkillValue(value, skills) {
-  if (!value) return true
-  return skills.some((skill) => skill.name === value)
-}
+import { TargetBar } from './TargetBar'
 
 function getMatchClass(value, target) {
   if (!value) return null
@@ -30,7 +24,15 @@ function getMatchClass(value, target) {
 
 export function WeaponPage() {
   const { weaponId } = useParams()
-  const { getCell, setCell, getTarget, setTarget, clearWeapon } = useRollData()
+  const {
+    getCell,
+    setCell,
+    getTarget,
+    setTarget,
+    getOccurrenceCount,
+    setOccurrenceCount,
+    clearWeapon,
+  } = useRollData()
   const [activeCell, setActiveCell] = useState(null)
 
   const weapon = useMemo(
@@ -38,18 +40,13 @@ export function WeaponPage() {
     [weaponId],
   )
 
-  const occurrences = useMemo(
-    () => Array.from({ length: MAX_ROLLS }, (_, i) => i + 1),
-    [],
-  )
-
   if (!weapon) {
     return <p>Type d'arme inconnu.</p>
   }
 
   const target = getTarget(weapon.id)
-  const isGroupTargetValid = isValidSkillValue(target.groupSkill, groupSkills)
-  const isBonusTargetValid = isValidSkillValue(target.bonusSkill, bonusSkills)
+  const occurrenceCount = getOccurrenceCount(weapon.id)
+  const occurrences = Array.from({ length: occurrenceCount }, (_, i) => i + 1)
 
   function handleClearAll() {
     const confirmed = window.confirm(
@@ -63,35 +60,12 @@ export function WeaponPage() {
     <div className="weapon-page">
       <h2>{weapon.name}</h2>
 
-      <div className="target-panel">
-        <h3>Combinaison recherchée</h3>
-        <div className="target-fields">
-          <label>
-            Set Bonus Skill
-            <SkillInput
-              id="target-bonus-skills-list"
-              skills={bonusSkills}
-              value={target.bonusSkill}
-              onChange={(value) => setTarget(weapon.id, { ...target, bonusSkill: value })}
-              placeholder="Bonus skill cible..."
-              invalid={!isBonusTargetValid}
-            />
-            {!isBonusTargetValid && <span className="field-error">Skill inconnu</span>}
-          </label>
-          <label>
-            Group Skill
-            <SkillInput
-              id="target-group-skills-list"
-              skills={groupSkills}
-              value={target.groupSkill}
-              onChange={(value) => setTarget(weapon.id, { ...target, groupSkill: value })}
-              placeholder="Group skill cible..."
-              invalid={!isGroupTargetValid}
-            />
-            {!isGroupTargetValid && <span className="field-error">Skill inconnu</span>}
-          </label>
-        </div>
-      </div>
+      <TargetBar
+        target={target}
+        onTargetChange={(value) => setTarget(weapon.id, value)}
+        occurrenceCount={occurrenceCount}
+        onOccurrenceCountChange={(value) => setOccurrenceCount(weapon.id, value)}
+      />
 
       <div className="table-wrapper">
         <table className="rolls-table">

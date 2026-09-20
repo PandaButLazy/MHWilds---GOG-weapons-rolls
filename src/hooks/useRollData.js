@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
+import { DEFAULT_OCCURRENCE_COUNT } from '../data/skills'
 
 const STORAGE_KEY = 'gog-rerolls-v1'
 const TARGETS_STORAGE_KEY = 'gog-rerolls-targets-v1'
+const OCCURRENCE_COUNTS_STORAGE_KEY = 'gog-rerolls-occurrence-counts-v1'
 
 function loadJSON(key) {
   try {
@@ -19,6 +21,7 @@ function cellKey(weaponId, element, occurrence) {
 export function useRollData() {
   const [data, setData] = useState(() => loadJSON(STORAGE_KEY))
   const [targets, setTargets] = useState(() => loadJSON(TARGETS_STORAGE_KEY))
+  const [occurrenceCounts, setOccurrenceCounts] = useState(() => loadJSON(OCCURRENCE_COUNTS_STORAGE_KEY))
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
@@ -27,6 +30,10 @@ export function useRollData() {
   useEffect(() => {
     localStorage.setItem(TARGETS_STORAGE_KEY, JSON.stringify(targets))
   }, [targets])
+
+  useEffect(() => {
+    localStorage.setItem(OCCURRENCE_COUNTS_STORAGE_KEY, JSON.stringify(occurrenceCounts))
+  }, [occurrenceCounts])
 
   const getCell = useCallback(
     (weaponId, element, occurrence) => data[cellKey(weaponId, element, occurrence)] || null,
@@ -54,6 +61,15 @@ export function useRollData() {
     setTargets((prev) => ({ ...prev, [weaponId]: value }))
   }, [])
 
+  const getOccurrenceCount = useCallback(
+    (weaponId) => occurrenceCounts[weaponId] ?? DEFAULT_OCCURRENCE_COUNT,
+    [occurrenceCounts],
+  )
+
+  const setOccurrenceCount = useCallback((weaponId, value) => {
+    setOccurrenceCounts((prev) => ({ ...prev, [weaponId]: value }))
+  }, [])
+
   const clearWeapon = useCallback((weaponId) => {
     const prefix = `${weaponId}::`
     setData((prev) => {
@@ -70,5 +86,13 @@ export function useRollData() {
     })
   }, [])
 
-  return { getCell, setCell, getTarget, setTarget, clearWeapon }
+  return {
+    getCell,
+    setCell,
+    getTarget,
+    setTarget,
+    getOccurrenceCount,
+    setOccurrenceCount,
+    clearWeapon,
+  }
 }
