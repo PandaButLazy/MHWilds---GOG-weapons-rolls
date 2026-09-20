@@ -6,8 +6,8 @@ import './App.css'
 function Home() {
   return (
     <div className="home">
-      <h2>Bienvenue</h2>
-      <p>Sélectionne un type d'arme dans le menu pour noter les rerolls observés.</p>
+      <h2>Welcome</h2>
+      <p>Select a weapon type from the menu to log the rerolls you've observed.</p>
     </div>
   )
 }

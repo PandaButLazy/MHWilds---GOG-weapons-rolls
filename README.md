@@ -3,23 +3,23 @@ An app that helps rolling on gog weapons
 
 ## Gogmazios Reroll Tracker
 
-Application React/Vite pour noter la séquence de rerolls des armes Gogmazios.
+A React/Vite app to log the reroll sequence of Gogmazios weapons.
 
-Pour chaque type d'arme, un tableau croise les éléments (colonnes) et les
-occurrences de reroll de 1 à 20 (lignes). Cliquer sur une case ouvre un
-formulaire pour saisir le Group Skill et le Bonus Skill obtenus à ce roll,
-afin de savoir à l'avance combien de rerolls refaire sur l'arme définitive.
+For each weapon type, a table crosses elements (columns) with reroll
+occurrences (rows, count configurable). Clicking a cell opens a form to
+enter the Group Skill and Set Bonus Skill obtained at that roll, so you know
+ahead of time how many rerolls to redo on your final weapon.
 
-Les données sont sauvegardées dans le `localStorage` du navigateur.
+Data is saved in the browser's `localStorage`.
 
-### Lancer le projet
+### Run the project
 
 ```bash
 npm install
 npm run dev
 ```
 
-### Build de production
+### Production build
 
 ```bash
 npm run build

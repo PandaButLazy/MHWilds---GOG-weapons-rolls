@@ -26,14 +26,14 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
 
     const nextErrors = {}
     if (!trimmedBonus) {
-      nextErrors.bonusSkill = 'Set Bonus Skill requis'
+      nextErrors.bonusSkill = 'Set Bonus Skill required'
     } else if (!isValidSkillValue(trimmedBonus, bonusSkills)) {
-      nextErrors.bonusSkill = 'Skill inconnu'
+      nextErrors.bonusSkill = 'Unknown skill'
     }
     if (!trimmedGroup) {
-      nextErrors.groupSkill = 'Group Skill requis'
+      nextErrors.groupSkill = 'Group Skill required'
     } else if (!isValidSkillValue(trimmedGroup, groupSkills)) {
-      nextErrors.groupSkill = 'Skill inconnu'
+      nextErrors.groupSkill = 'Unknown skill'
     }
 
     if (Object.keys(nextErrors).length > 0) {
@@ -61,7 +61,7 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
                 setBonusSkill(value)
                 setErrors((prev) => ({ ...prev, bonusSkill: undefined }))
               }}
-              placeholder="Rechercher ou choisir..."
+              placeholder="Search or choose..."
               invalid={Boolean(errors.bonusSkill)}
             />
             {errors.bonusSkill && <span className="field-error">{errors.bonusSkill}</span>}
@@ -76,7 +76,7 @@ export function RollCellModal({ weaponName, element, occurrence, initialValue, o
                 setGroupSkill(value)
                 setErrors((prev) => ({ ...prev, groupSkill: undefined }))
               }}
-              placeholder="Rechercher ou choisir..."
+              placeholder="Search or choose..."
               invalid={Boolean(errors.groupSkill)}
             />
             {errors.groupSkill && <span className="field-error">{errors.groupSkill}</span>}

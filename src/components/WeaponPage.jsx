@@ -42,7 +42,7 @@ export function WeaponPage() {
   )
 
   if (!weapon) {
-    return <p>Type d'arme inconnu.</p>
+    return <p>Unknown weapon type.</p>
   }
 
   const target = getTarget(weapon.id)
@@ -51,7 +51,7 @@ export function WeaponPage() {
 
   function handleClearAll() {
     const confirmed = window.confirm(
-      `Effacer toutes les données de rerolls pour "${weapon.name}" ? Cette action est irréversible.`,
+      `Clear all reroll data for "${weapon.name}"? This action cannot be undone.`,
     )
     if (!confirmed) return
     clearWeapon(weapon.id)
@@ -126,7 +126,7 @@ export function WeaponPage() {
 
       <div className="danger-zone">
         <button type="button" className="btn-danger" onClick={handleClearAll}>
-          Tout effacer pour cette arme
+          Clear all for this weapon
         </button>
       </div>
 

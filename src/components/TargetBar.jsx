@@ -30,10 +30,10 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
             skills={bonusSkills}
             value={target.bonusSkill}
             onChange={(value) => onTargetChange({ ...target, bonusSkill: value })}
-            placeholder="Bonus skill cible..."
+            placeholder="Target bonus skill..."
             invalid={!isBonusTargetValid}
           />
-          {!isBonusTargetValid && <span className="field-error">Skill inconnu</span>}
+          {!isBonusTargetValid && <span className="field-error">Unknown skill</span>}
         </label>
         <label>
           <FieldLabel iconUrl={groupSkillCategory?.image_url}>Group Skill</FieldLabel>
@@ -42,10 +42,10 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
             skills={groupSkills}
             value={target.groupSkill}
             onChange={(value) => onTargetChange({ ...target, groupSkill: value })}
-            placeholder="Group skill cible..."
+            placeholder="Target group skill..."
             invalid={!isGroupTargetValid}
           />
-          {!isGroupTargetValid && <span className="field-error">Skill inconnu</span>}
+          {!isGroupTargetValid && <span className="field-error">Unknown skill</span>}
         </label>
         <input
           type="number"
@@ -55,7 +55,7 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
           value={occurrenceCount}
           onChange={(e) => onOccurrenceCountChange(clampOccurrenceCount(e.target.value))}
           placeholder="Occurrences"
-          title="Nombre d'occurrences"
+          title="Number of occurrences"
         />
       </div>
     </div>
