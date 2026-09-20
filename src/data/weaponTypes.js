@@ -1,16 +1,37 @@
-export const weaponTypes = [
-  { id: 'great-sword', name: 'Great Sword' },
-  { id: 'long-sword', name: 'Long Sword' },
-  { id: 'sword-and-shield', name: 'Sword & Shield' },
-  { id: 'dual-blades', name: 'Dual Blades' },
-  { id: 'hammer', name: 'Hammer' },
-  { id: 'hunting-horn', name: 'Hunting Horn' },
-  { id: 'lance', name: 'Lance' },
-  { id: 'gunlance', name: 'Gunlance' },
-  { id: 'switch-axe', name: 'Switch Axe' },
-  { id: 'charge-blade', name: 'Charge Blade' },
-  { id: 'insect-glaive', name: 'Insect Glaive' },
-  { id: 'bow', name: 'Bow' },
-  { id: 'light-bowgun', name: 'Light Bowgun' },
-  { id: 'heavy-bowgun', name: 'Heavy Bowgun' },
+import weaponsData from '../../weapons.json'
+
+const ORDER = [
+  'Great Sword',
+  'Long Sword',
+  'Sword & Shield',
+  'Dual Blades',
+  'Hammer',
+  'Hunting Horn',
+  'Lance',
+  'Gunlance',
+  'Switch Axe',
+  'Charge Blade',
+  'Insect Glaive',
+  'Bow',
+  'Light Bowgun',
+  'Heavy Bowgun',
 ]
+
+function slugify(name) {
+  return name.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, '-')
+}
+
+const weaponsByName = new Map(weaponsData.weapons.map((weapon) => [weapon.name, weapon]))
+
+export const weaponTypes = ORDER.map((name) => {
+  const weapon = weaponsByName.get(name)
+  return {
+    id: slugify(name),
+    name,
+    description: weapon?.description ?? '',
+    iconUrl: weapon?.icon_url ?? '',
+    imageUrl: weapon?.image_url ?? '',
+    url: weapon?.url ?? '',
+    weaponTreeUrl: weapon?.weapon_tree_url ?? '',
+  }
+})

@@ -1,0 +1,116 @@
+{
+  "weapons": [
+    {
+      "name": "Great Sword",
+      "description": "Large, powerful but slow heavy-damagers",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Great_Sword",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/2/20/Great-sword_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/2/2f/Great_sword_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Great_Sword_Weapon_Tree"
+    },
+    {
+      "name": "Sword & Shield",
+      "description": "Balanced, mobile & beginner friendly",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Sword_and_Shield",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/8/8b/Sword-and-shield_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/8/84/Sword_and_shield_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Sword_and_Shield_Weapon_Tree"
+    },
+    {
+      "name": "Dual Blades",
+      "description": "Light with extremely fast flurry of attacks",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Dual_Blades",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/d/da/Dual-blades_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/9/9a/Dual_blades_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Dual_Blades_Weapon_Tree"
+    },
+    {
+      "name": "Long Sword",
+      "description": "Nimble and with great melee range",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Long_Sword",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/4/4b/Long-sword_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/e/e7/Long_sword_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Long_Sword_Weapon_Tree"
+    },
+    {
+      "name": "Hammer",
+      "description": "Slow but heavy & stunning attacks",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Hammer",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/9/9d/Hammer_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/3/34/Hammer_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Hammer_Weapon_Tree"
+    },
+    {
+      "name": "Hunting Horn",
+      "description": "Easy and long-range support weapon",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Hunting_Horn",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/7/7d/Hunting-horn_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/9/98/Hunting_horn_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Hunting_Horn_Weapon_Tree"
+    },
+    {
+      "name": "Lance",
+      "description": "Strong Defense and Offense",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Lance",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/0/03/Lance_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/6/68/Lance_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Lance_Weapon_Tree"
+    },
+    {
+      "name": "Gunlance",
+      "description": "High offense, limited range",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Gunlance",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/e/ef/Gunlance_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/0/09/Gunlance_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Gunlance_Weapon_Tree"
+    },
+    {
+      "name": "Switch Axe",
+      "description": "Versatile, fast & elemental damage",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Switch_Axe",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/a/a0/Switch-axe_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/6/63/Switch_axe_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Switch_Axe_Weapon_Tree"
+    },
+    {
+      "name": "Charge Blade",
+      "description": "Versatile, powerful and fast",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Charge_Blade",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/6/6e/Charge-blade_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/3/3c/Charge_blade_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Charge_Blade_Weapon_Tree"
+    },
+    {
+      "name": "Insect Glaive",
+      "description": "Mobile, aerial attacks and buffs",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Insect_Glaive",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/a/a3/Insect-glaive_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/a/a1/Insect_glaive_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Insect_Glaive_Weapon_Tree"
+    },
+    {
+      "name": "Bow",
+      "description": "Fast, ranged debuff attacks",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Bow",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/e/e6/Bow_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/7/75/Bow_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Bow_Weapon_Tree"
+    },
+    {
+      "name": "Light Bowgun",
+      "description": "High mobility, rapid fire ranged weapon",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Light_Bowgun",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/f/f4/Light-bowgun_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/c/c7/Light_bowgun_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Light_Bowgun_Weapon_Tree"
+    },
+    {
+      "name": "Heavy Bowgun",
+      "description": "Slow but powerful ranged attacks",
+      "url": "https://monsterhunterwilds.wiki.fextralife.com/Heavy_Bowgun",
+      "icon_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/f/fe/Heavy-bowgun_weapon_icon_mhwilds_wiki_guide_25px.png",
+      "image_url": "https://static0.fextralifeimages.com/file/monsterhunterwilds/d/dd/Heavy-bowgun_weapons_mhw_wiki_guide300px.png",
+      "weapon_tree_url": "https://monsterhunterwilds.wiki.fextralife.com/Heavy_Bowgun_Weapon_Tree"
+    }
+  ]
+}

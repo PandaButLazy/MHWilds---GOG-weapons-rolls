@@ -12,6 +12,9 @@ export function Sidebar() {
               to={`/weapon/${weapon.id}`}
               className={({ isActive }) => (isActive ? 'sidebar-link active' : 'sidebar-link')}
             >
+              {weapon.iconUrl && (
+                <img className="sidebar-icon" src={weapon.iconUrl} alt="" width={20} height={20} />
+              )}
               {weapon.name}
             </NavLink>
           </li>

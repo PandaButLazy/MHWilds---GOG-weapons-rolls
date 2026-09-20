@@ -27,12 +27,19 @@
 }
 
 .sidebar-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 10px;
   border-radius: 6px;
   color: var(--text);
   text-decoration: none;
   font-size: 14px;
+}
+
+.sidebar-icon {
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .sidebar-link:hover {
@@ -49,6 +56,12 @@
   flex: 1;
   padding: 24px 32px;
   overflow-x: auto;
+}
+
+.weapon-page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .home {

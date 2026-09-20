@@ -58,7 +58,10 @@ export function WeaponPage() {
 
   return (
     <div className="weapon-page">
-      <h2>{weapon.name}</h2>
+      <h2 className="weapon-page-title">
+        {weapon.iconUrl && <img src={weapon.iconUrl} alt="" width={28} height={28} />}
+        {weapon.name}
+      </h2>
 
       <TargetBar
         target={target}
