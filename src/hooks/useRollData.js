@@ -43,16 +43,16 @@ export function useRollData() {
     })
   }, [])
 
-  const getMaxOccurrence = useCallback(
+  const getLoggedOccurrences = useCallback(
     (weaponId) => {
       const prefix = `${weaponId}::`
-      let max = 0
+      const occurrences = new Set()
       for (const key of Object.keys(data)) {
         if (!key.startsWith(prefix)) continue
         const occurrence = Number(key.slice(prefix.length).split('::')[1])
-        if (Number.isFinite(occurrence) && occurrence > max) max = occurrence
+        if (Number.isFinite(occurrence)) occurrences.add(occurrence)
       }
-      return max
+      return Array.from(occurrences).sort((a, b) => a - b)
     },
     [data],
   )
@@ -85,7 +85,7 @@ export function useRollData() {
   return {
     getCell,
     setCell,
-    getMaxOccurrence,
+    getLoggedOccurrences,
     getTarget,
     setTarget,
     clearWeapon,

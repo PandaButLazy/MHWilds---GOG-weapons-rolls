@@ -470,6 +470,14 @@
   color: var(--border);
 }
 
+.rolls-table-empty {
+  text-align: center;
+  padding: 24px 12px;
+  color: var(--text);
+  opacity: 0.7;
+  cursor: default;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;

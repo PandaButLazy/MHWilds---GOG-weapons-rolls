@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { elements } from '../data/elements'
-import { bonusSkillCategory, groupSkillCategory, MIN_TABLE_ROWS } from '../data/skills'
+import { bonusSkillCategory, groupSkillCategory } from '../data/skills'
 import { weaponTypes } from '../data/weaponTypes'
 import { useRollData } from '../hooks/useRollData'
 import { LogRollForm } from './LogRollForm'
@@ -26,7 +26,7 @@ function getMatchClass(value, target) {
 
 export function WeaponPage() {
   const { weaponId } = useParams()
-  const { getCell, setCell, getMaxOccurrence, getTarget, setTarget, clearWeapon } = useRollData()
+  const { getCell, setCell, getLoggedOccurrences, getTarget, setTarget, clearWeapon } = useRollData()
   const [activeCell, setActiveCell] = useState(null)
 
   const weapon = useMemo(
@@ -39,8 +39,7 @@ export function WeaponPage() {
   }
 
   const target = getTarget(weapon.id)
-  const rowCount = Math.max(MIN_TABLE_ROWS, getMaxOccurrence(weapon.id))
-  const occurrences = Array.from({ length: rowCount }, (_, i) => i + 1)
+  const occurrences = getLoggedOccurrences(weapon.id)
 
   function handleClearAll() {
     const confirmed = window.confirm(
@@ -84,6 +83,13 @@ export function WeaponPage() {
             </tr>
           </thead>
           <tbody>
+            {occurrences.length === 0 && (
+              <tr>
+                <td colSpan={elements.length + 1} className="rolls-table-empty">
+                  No rolls logged yet for this weapon. Use "Log a Roll" above to add one.
+                </td>
+              </tr>
+            )}
             {occurrences.map((occurrence) => (
               <tr key={occurrence}>
                 <th scope="row">{occurrence}</th>

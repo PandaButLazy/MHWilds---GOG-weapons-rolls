@@ -11,8 +11,6 @@ const skillCategoriesByName = new Map(
 export const groupSkillCategory = skillCategoriesByName.get('Group Skills') ?? null
 export const bonusSkillCategory = skillCategoriesByName.get('Set Bonus Skills') ?? null
 
-export const MIN_TABLE_ROWS = 10
-
 export function isValidSkillValue(value, skills) {
   if (!value) return true
   return skills.some((skill) => skill.name === value)
