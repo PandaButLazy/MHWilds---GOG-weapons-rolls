@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
+import { useTarredDevices } from '../context/TarredDevicesContext'
 import { elements } from '../data/elements'
 import { bonusSkillCategory, bonusSkills, groupSkillCategory, groupSkills, isValidSkillValue } from '../data/skills'
 import { rollsFromDeviceUsage, TARRED_DEVICE_TYPES } from '../data/tarredDevices'
-import { useTarredDevices } from '../hooks/useTarredDevices'
 import { FieldLabel } from './FieldLabel'
 import { SkillInput } from './SkillInput'
 

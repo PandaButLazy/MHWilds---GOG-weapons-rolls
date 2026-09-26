@@ -3,6 +3,45 @@
   min-height: 100vh;
 }
 
+.device-currency-bar {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+}
+
+.device-currency-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.device-icon {
+  flex-shrink: 0;
+}
+
+.device-currency-attack .device-icon {
+  color: #dc2626;
+}
+
+.device-currency-affinity .device-icon {
+  color: #2563eb;
+}
+
+.device-currency-element .device-icon {
+  color: #ea580c;
+}
+
 .sidebar {
   width: 220px;
   flex-shrink: 0;

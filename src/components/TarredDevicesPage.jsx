@@ -1,5 +1,5 @@
+import { useTarredDevices } from '../context/TarredDevicesContext'
 import { TARRED_DEVICE_TYPES } from '../data/tarredDevices'
-import { useTarredDevices } from '../hooks/useTarredDevices'
 
 export function TarredDevicesPage() {
   const { counts, setCount, adjustCount } = useTarredDevices()

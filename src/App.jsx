@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { DeviceCurrencyBar } from './components/DeviceCurrencyBar'
 import { InventoryPage } from './components/InventoryPage'
 import { Sidebar } from './components/Sidebar'
 import { TarredDevicesPage } from './components/TarredDevicesPage'
@@ -17,6 +18,7 @@ function Home() {
 export default function App() {
   return (
     <div className="app-layout">
+      <DeviceCurrencyBar />
       <Sidebar />
       <main className="content">
         <Routes>
