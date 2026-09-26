@@ -11,9 +11,7 @@ const skillCategoriesByName = new Map(
 export const groupSkillCategory = skillCategoriesByName.get('Group Skills') ?? null
 export const bonusSkillCategory = skillCategoriesByName.get('Set Bonus Skills') ?? null
 
-export const DEFAULT_OCCURRENCE_COUNT = 20
-export const MIN_OCCURRENCE_COUNT = 1
-export const MAX_OCCURRENCE_COUNT = 200
+export const MIN_TABLE_ROWS = 10
 
 export function isValidSkillValue(value, skills) {
   if (!value) return true

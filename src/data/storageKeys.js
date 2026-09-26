@@ -1,5 +1,4 @@
 export const ROLLS_STORAGE_KEY = 'gog-rerolls-v1'
 export const TARGETS_STORAGE_KEY = 'gog-rerolls-targets-v1'
-export const OCCURRENCE_COUNTS_STORAGE_KEY = 'gog-rerolls-occurrence-counts-v1'
 export const INVENTORY_STORAGE_KEY = 'gog-weapon-inventory-v1'
 export const TARRED_DEVICES_STORAGE_KEY = 'gog-tarred-devices-v1'

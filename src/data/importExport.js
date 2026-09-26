@@ -1,6 +1,5 @@
 import {
   INVENTORY_STORAGE_KEY,
-  OCCURRENCE_COUNTS_STORAGE_KEY,
   ROLLS_STORAGE_KEY,
   TARGETS_STORAGE_KEY,
   TARRED_DEVICES_STORAGE_KEY,
@@ -23,7 +22,6 @@ export function buildExportData() {
     exportedAt: new Date().toISOString(),
     rolls: readJSON(ROLLS_STORAGE_KEY, {}),
     targets: readJSON(TARGETS_STORAGE_KEY, {}),
-    occurrenceCounts: readJSON(OCCURRENCE_COUNTS_STORAGE_KEY, {}),
     inventory: readJSON(INVENTORY_STORAGE_KEY, []),
     tarredDevices: readJSON(TARRED_DEVICES_STORAGE_KEY, {}),
   }
@@ -48,7 +46,6 @@ export function applyImportData(data) {
   }
   localStorage.setItem(ROLLS_STORAGE_KEY, JSON.stringify(data.rolls ?? {}))
   localStorage.setItem(TARGETS_STORAGE_KEY, JSON.stringify(data.targets ?? {}))
-  localStorage.setItem(OCCURRENCE_COUNTS_STORAGE_KEY, JSON.stringify(data.occurrenceCounts ?? {}))
   localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify(data.inventory ?? []))
   localStorage.setItem(TARRED_DEVICES_STORAGE_KEY, JSON.stringify(data.tarredDevices ?? {}))
 }

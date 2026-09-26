@@ -1,22 +1,8 @@
-import {
-  bonusSkillCategory,
-  bonusSkills,
-  groupSkillCategory,
-  groupSkills,
-  isValidSkillValue,
-  MAX_OCCURRENCE_COUNT,
-  MIN_OCCURRENCE_COUNT,
-} from '../data/skills'
+import { bonusSkillCategory, bonusSkills, groupSkillCategory, groupSkills, isValidSkillValue } from '../data/skills'
 import { FieldLabel } from './FieldLabel'
 import { SkillInput } from './SkillInput'
 
-function clampOccurrenceCount(value) {
-  const parsed = Number(value)
-  if (!Number.isFinite(parsed)) return MIN_OCCURRENCE_COUNT
-  return Math.min(MAX_OCCURRENCE_COUNT, Math.max(MIN_OCCURRENCE_COUNT, Math.round(parsed)))
-}
-
-export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenceCountChange }) {
+export function TargetBar({ target, onTargetChange }) {
   const isBonusTargetValid = isValidSkillValue(target.bonusSkill, bonusSkills)
   const isGroupTargetValid = isValidSkillValue(target.groupSkill, groupSkills)
 
@@ -47,16 +33,6 @@ export function TargetBar({ target, onTargetChange, occurrenceCount, onOccurrenc
           />
           {!isGroupTargetValid && <span className="field-error">Unknown skill</span>}
         </label>
-        <input
-          type="number"
-          className="occurrence-count-input"
-          min={MIN_OCCURRENCE_COUNT}
-          max={MAX_OCCURRENCE_COUNT}
-          value={occurrenceCount}
-          onChange={(e) => onOccurrenceCountChange(clampOccurrenceCount(e.target.value))}
-          placeholder="Occurrences"
-          title="Number of occurrences"
-        />
       </div>
     </div>
   )

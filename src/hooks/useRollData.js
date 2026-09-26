@@ -1,10 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { DEFAULT_OCCURRENCE_COUNT } from '../data/skills'
-import {
-  OCCURRENCE_COUNTS_STORAGE_KEY,
-  ROLLS_STORAGE_KEY as STORAGE_KEY,
-  TARGETS_STORAGE_KEY,
-} from '../data/storageKeys'
+import { ROLLS_STORAGE_KEY as STORAGE_KEY, TARGETS_STORAGE_KEY } from '../data/storageKeys'
 
 function loadJSON(key) {
   try {
@@ -22,7 +17,6 @@ function cellKey(weaponId, element, occurrence) {
 export function useRollData() {
   const [data, setData] = useState(() => loadJSON(STORAGE_KEY))
   const [targets, setTargets] = useState(() => loadJSON(TARGETS_STORAGE_KEY))
-  const [occurrenceCounts, setOccurrenceCounts] = useState(() => loadJSON(OCCURRENCE_COUNTS_STORAGE_KEY))
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
@@ -31,10 +25,6 @@ export function useRollData() {
   useEffect(() => {
     localStorage.setItem(TARGETS_STORAGE_KEY, JSON.stringify(targets))
   }, [targets])
-
-  useEffect(() => {
-    localStorage.setItem(OCCURRENCE_COUNTS_STORAGE_KEY, JSON.stringify(occurrenceCounts))
-  }, [occurrenceCounts])
 
   const getCell = useCallback(
     (weaponId, element, occurrence) => data[cellKey(weaponId, element, occurrence)] || null,
@@ -53,6 +43,20 @@ export function useRollData() {
     })
   }, [])
 
+  const getMaxOccurrence = useCallback(
+    (weaponId) => {
+      const prefix = `${weaponId}::`
+      let max = 0
+      for (const key of Object.keys(data)) {
+        if (!key.startsWith(prefix)) continue
+        const occurrence = Number(key.slice(prefix.length).split('::')[1])
+        if (Number.isFinite(occurrence) && occurrence > max) max = occurrence
+      }
+      return max
+    },
+    [data],
+  )
+
   const getTarget = useCallback(
     (weaponId) => targets[weaponId] || { groupSkill: '', bonusSkill: '' },
     [targets],
@@ -60,15 +64,6 @@ export function useRollData() {
 
   const setTarget = useCallback((weaponId, value) => {
     setTargets((prev) => ({ ...prev, [weaponId]: value }))
-  }, [])
-
-  const getOccurrenceCount = useCallback(
-    (weaponId) => occurrenceCounts[weaponId] ?? DEFAULT_OCCURRENCE_COUNT,
-    [occurrenceCounts],
-  )
-
-  const setOccurrenceCount = useCallback((weaponId, value) => {
-    setOccurrenceCounts((prev) => ({ ...prev, [weaponId]: value }))
   }, [])
 
   const clearWeapon = useCallback((weaponId) => {
@@ -90,10 +85,9 @@ export function useRollData() {
   return {
     getCell,
     setCell,
+    getMaxOccurrence,
     getTarget,
     setTarget,
-    getOccurrenceCount,
-    setOccurrenceCount,
     clearWeapon,
   }
 }

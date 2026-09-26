@@ -24,3 +24,11 @@ export const DEFAULT_TARRED_DEVICE_COUNTS = {
   affinity: 0,
   element: 0,
 }
+
+export const MATCHING_FOCUS_DEVICE_COST = 3
+export const MISMATCHED_FOCUS_DEVICE_COST = 6
+
+export function rollsFromDeviceUsage(used, matchesFocus) {
+  const cost = matchesFocus ? MATCHING_FOCUS_DEVICE_COST : MISMATCHED_FOCUS_DEVICE_COST
+  return Math.floor((Number(used) || 0) / cost)
+}
