@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { useTarredDevices } from '../context/TarredDevicesContext'
-import { createEmptyDeviceUsage, TARRED_DEVICE_TYPES, totalRollsFromUsage } from '../data/tarredDevices'
+import { TARRED_DEVICE_TYPES } from '../data/tarredDevices'
 import { weaponTypes } from '../data/weaponTypes'
 import { useRollAdvanceLog } from '../hooks/useRollAdvanceLog'
 import { useRollData } from '../hooks/useRollData'
-import { DeviceUsageFields } from './DeviceUsageFields'
 
 function describeDeviceUsage(deviceUsage) {
   const parts = TARRED_DEVICE_TYPES.filter((device) => deviceUsage[device.id].used > 0).map(
@@ -19,43 +17,10 @@ function findWeaponName(weaponId) {
 
 export function RollLogPage() {
   const { adjustCount } = useTarredDevices()
-  const { advanceAllRolls, revertAdvance } = useRollData()
-  const { entries, addEntry, removeEntry } = useRollAdvanceLog()
-  const [deviceUsage, setDeviceUsage] = useState(createEmptyDeviceUsage)
-  const [error, setError] = useState('')
+  const { revertAdvance } = useRollData()
+  const { entries, removeEntry } = useRollAdvanceLog()
 
-  const rollsToAdvance = totalRollsFromUsage(deviceUsage)
   const latestEntryId = entries.length > 0 ? entries[entries.length - 1].id : null
-
-  function updateUsage(deviceId, patch) {
-    setDeviceUsage((prev) => ({ ...prev, [deviceId]: { ...prev[deviceId], ...patch } }))
-  }
-
-  function handleAdvance(e) {
-    e.preventDefault()
-    if (rollsToAdvance < 1) {
-      setError('Enter enough Tarred Devices for at least one roll')
-      return
-    }
-
-    const confirmed = window.confirm(
-      `Advance the roll sequence by ${rollsToAdvance} roll${rollsToAdvance > 1 ? 's' : ''}? ` +
-        'This shifts every logged roll on every weapon back by that many, and drops any that reach zero.',
-    )
-    if (!confirmed) return
-
-    const removedEntries = advanceAllRolls(rollsToAdvance)
-
-    TARRED_DEVICE_TYPES.forEach((device) => {
-      const used = deviceUsage[device.id].used
-      if (used > 0) adjustCount(device.id, -used)
-    })
-
-    addEntry({ deviceUsage, rollsAdvanced: rollsToAdvance, removedEntries })
-
-    setDeviceUsage(createEmptyDeviceUsage())
-    setError('')
-  }
 
   function handleRevert(entry) {
     const confirmed = window.confirm(
@@ -79,24 +44,9 @@ export function RollLogPage() {
     <div className="roll-log-page">
       <h2>Roll Log</h2>
       <p className="page-intro">
-        Crafting or reinforcing another Gogma weapon advances the shared roll sequence. Log how
-        many Tarred Devices you spent doing that here to shift every weapon's recorded rolls back
-        by the right amount, and keep your tables in sync with where the sequence actually is.
+        History of every time you advanced the shared roll sequence from a weapon page. Only the
+        most recent advance can be reverted, restoring its devices and shifting rolls back up.
       </p>
-
-      <div className="log-roll-panel">
-        <h3>Advance Rolls</h3>
-        <form onSubmit={handleAdvance}>
-          <DeviceUsageFields usage={deviceUsage} onChange={updateUsage} />
-          {error && <span className="field-error">{error}</span>}
-          <div className="computed-roll">
-            Rolls to advance: <strong>{rollsToAdvance || '—'}</strong>
-          </div>
-          <button type="submit" className="btn-primary">
-            Advance Rolls
-          </button>
-        </form>
-      </div>
 
       <div className="roll-log-list">
         {displayEntries.length === 0 && <p className="page-intro">No advances logged yet.</p>}

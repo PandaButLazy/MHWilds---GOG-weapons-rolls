@@ -4,6 +4,7 @@ import { elements } from '../data/elements'
 import { bonusSkillCategory, groupSkillCategory } from '../data/skills'
 import { weaponTypes } from '../data/weaponTypes'
 import { useRollData } from '../hooks/useRollData'
+import { AdvanceRollForm } from './AdvanceRollForm'
 import { LogRollForm } from './LogRollForm'
 import { RollCellModal } from './RollCellModal'
 import { TargetBar } from './TargetBar'
@@ -26,7 +27,8 @@ function getMatchClass(value, target) {
 
 export function WeaponPage() {
   const { weaponId } = useParams()
-  const { getCell, setCell, getLoggedOccurrences, getTarget, setTarget, clearWeapon } = useRollData()
+  const { getCell, setCell, getLoggedOccurrences, getTarget, setTarget, advanceAllRolls, clearWeapon } =
+    useRollData()
   const [activeCell, setActiveCell] = useState(null)
 
   const weapon = useMemo(
@@ -71,6 +73,8 @@ export function WeaponPage() {
       <TargetBar target={target} onTargetChange={(value) => setTarget(weapon.id, value)} />
 
       <LogRollForm onLogRoll={handleLogRoll} />
+
+      <AdvanceRollForm advanceAllRolls={advanceAllRolls} />
 
       <div className="table-wrapper">
         <table className="rolls-table">
