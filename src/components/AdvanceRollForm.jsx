@@ -7,6 +7,7 @@ import { DeviceUsageFields } from './DeviceUsageFields'
 export function AdvanceRollForm({ advanceAllRolls }) {
   const { adjustCount } = useTarredDevices()
   const { addEntry } = useRollAdvanceLog()
+  const [isOpen, setIsOpen] = useState(false)
   const [deviceUsage, setDeviceUsage] = useState(createEmptyDeviceUsage)
   const [error, setError] = useState('')
 
@@ -14,6 +15,16 @@ export function AdvanceRollForm({ advanceAllRolls }) {
 
   function updateUsage(deviceId, patch) {
     setDeviceUsage((prev) => ({ ...prev, [deviceId]: { ...prev[deviceId], ...patch } }))
+  }
+
+  function resetForm() {
+    setDeviceUsage(createEmptyDeviceUsage())
+    setError('')
+  }
+
+  function handleCancel() {
+    resetForm()
+    setIsOpen(false)
   }
 
   function handleSubmit(e) {
@@ -38,8 +49,18 @@ export function AdvanceRollForm({ advanceAllRolls }) {
 
     addEntry({ deviceUsage, rollsAdvanced: rollsToAdvance, removedEntries })
 
-    setDeviceUsage(createEmptyDeviceUsage())
-    setError('')
+    resetForm()
+    setIsOpen(false)
+  }
+
+  if (!isOpen) {
+    return (
+      <div className="advance-roll-trigger">
+        <button type="button" className="btn-primary" onClick={() => setIsOpen(true)}>
+          Advance Rolls
+        </button>
+      </div>
+    )
   }
 
   return (
@@ -56,9 +77,14 @@ export function AdvanceRollForm({ advanceAllRolls }) {
         <div className="computed-roll">
           Rolls to advance: <strong>{rollsToAdvance || '—'}</strong>
         </div>
-        <button type="submit" className="btn-primary">
-          Advance Rolls
-        </button>
+        <div className="modal-actions">
+          <button type="button" className="btn-secondary" onClick={handleCancel}>
+            Cancel
+          </button>
+          <button type="submit" className="btn-primary">
+            Confirm Advance
+          </button>
+        </div>
       </form>
     </div>
   )

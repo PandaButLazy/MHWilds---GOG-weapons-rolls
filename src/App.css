@@ -289,6 +289,10 @@
   background: var(--bg-alt);
 }
 
+.advance-roll-trigger {
+  margin-top: 16px;
+}
+
 .log-roll-panel h3 {
   margin: 0 0 10px;
   font-size: 14px;
