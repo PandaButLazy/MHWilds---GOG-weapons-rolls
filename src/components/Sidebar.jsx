@@ -27,6 +27,14 @@ export function Sidebar() {
             Tarred Devices
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/roll-log"
+            className={({ isActive }) => (isActive ? 'sidebar-link active' : 'sidebar-link')}
+          >
+            Roll Log
+          </NavLink>
+        </li>
       </ul>
 
       <div className="sidebar-divider" />

@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { DeviceCurrencyBar } from './components/DeviceCurrencyBar'
 import { InventoryPage } from './components/InventoryPage'
+import { RollLogPage } from './components/RollLogPage'
 import { Sidebar } from './components/Sidebar'
 import { TarredDevicesPage } from './components/TarredDevicesPage'
 import { WeaponPage } from './components/WeaponPage'
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/weapon/:weaponId" element={<WeaponPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/tarred-devices" element={<TarredDevicesPage />} />
+          <Route path="/roll-log" element={<RollLogPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

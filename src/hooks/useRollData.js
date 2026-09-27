@@ -66,6 +66,40 @@ export function useRollData() {
     setTargets((prev) => ({ ...prev, [weaponId]: value }))
   }, [])
 
+  const advanceAllRolls = useCallback(
+    (rollsAdvanced) => {
+      const next = {}
+      const removedEntries = []
+      for (const [key, value] of Object.entries(data)) {
+        const [weaponId, element, occurrenceStr] = key.split('::')
+        const newOccurrence = Number(occurrenceStr) - rollsAdvanced
+        if (newOccurrence > 0) {
+          next[`${weaponId}::${element}::${newOccurrence}`] = value
+        } else {
+          removedEntries.push({ weaponId, element, occurrence: Number(occurrenceStr), value })
+        }
+      }
+      setData(next)
+      return removedEntries
+    },
+    [data],
+  )
+
+  const revertAdvance = useCallback((rollsAdvanced, removedEntries) => {
+    setData((prev) => {
+      const next = {}
+      for (const [key, value] of Object.entries(prev)) {
+        const [weaponId, element, occurrenceStr] = key.split('::')
+        const occurrence = Number(occurrenceStr) + rollsAdvanced
+        next[`${weaponId}::${element}::${occurrence}`] = value
+      }
+      for (const entry of removedEntries) {
+        next[`${entry.weaponId}::${entry.element}::${entry.occurrence}`] = entry.value
+      }
+      return next
+    })
+  }, [])
+
   const clearWeapon = useCallback((weaponId) => {
     const prefix = `${weaponId}::`
     setData((prev) => {
@@ -88,6 +122,8 @@ export function useRollData() {
     getLoggedOccurrences,
     getTarget,
     setTarget,
+    advanceAllRolls,
+    revertAdvance,
     clearWeapon,
   }
 }

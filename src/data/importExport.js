@@ -1,5 +1,6 @@
 import {
   INVENTORY_STORAGE_KEY,
+  ROLL_ADVANCE_LOG_STORAGE_KEY,
   ROLLS_STORAGE_KEY,
   TARGETS_STORAGE_KEY,
   TARRED_DEVICES_STORAGE_KEY,
@@ -24,6 +25,7 @@ export function buildExportData() {
     targets: readJSON(TARGETS_STORAGE_KEY, {}),
     inventory: readJSON(INVENTORY_STORAGE_KEY, []),
     tarredDevices: readJSON(TARRED_DEVICES_STORAGE_KEY, {}),
+    rollAdvanceLog: readJSON(ROLL_ADVANCE_LOG_STORAGE_KEY, []),
   }
 }
 
@@ -48,6 +50,7 @@ export function applyImportData(data) {
   localStorage.setItem(TARGETS_STORAGE_KEY, JSON.stringify(data.targets ?? {}))
   localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify(data.inventory ?? []))
   localStorage.setItem(TARRED_DEVICES_STORAGE_KEY, JSON.stringify(data.tarredDevices ?? {}))
+  localStorage.setItem(ROLL_ADVANCE_LOG_STORAGE_KEY, JSON.stringify(data.rollAdvanceLog ?? []))
 }
 
 export function importFromFile(file) {

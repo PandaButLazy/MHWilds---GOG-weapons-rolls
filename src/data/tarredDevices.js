@@ -32,3 +32,17 @@ export function rollsFromDeviceUsage(used, matchesFocus) {
   const cost = matchesFocus ? MATCHING_FOCUS_DEVICE_COST : MISMATCHED_FOCUS_DEVICE_COST
   return Math.floor((Number(used) || 0) / cost)
 }
+
+export function createEmptyDeviceUsage() {
+  return TARRED_DEVICE_TYPES.reduce(
+    (acc, device) => ({ ...acc, [device.id]: { used: 0, matchesFocus: false } }),
+    {},
+  )
+}
+
+export function totalRollsFromUsage(usage) {
+  return TARRED_DEVICE_TYPES.reduce(
+    (total, device) => total + rollsFromDeviceUsage(usage[device.id].used, usage[device.id].matchesFocus),
+    0,
+  )
+}

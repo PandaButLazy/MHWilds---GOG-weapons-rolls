@@ -1,32 +1,21 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useTarredDevices } from '../context/TarredDevicesContext'
 import { elements } from '../data/elements'
 import { bonusSkillCategory, bonusSkills, groupSkillCategory, groupSkills, isValidSkillValue } from '../data/skills'
-import { rollsFromDeviceUsage, TARRED_DEVICE_TYPES } from '../data/tarredDevices'
+import { createEmptyDeviceUsage, TARRED_DEVICE_TYPES, totalRollsFromUsage } from '../data/tarredDevices'
+import { DeviceUsageFields } from './DeviceUsageFields'
 import { FieldLabel } from './FieldLabel'
 import { SkillInput } from './SkillInput'
 
-const EMPTY_USAGE = TARRED_DEVICE_TYPES.reduce(
-  (acc, device) => ({ ...acc, [device.id]: { used: 0, matchesFocus: false } }),
-  {},
-)
-
 export function LogRollForm({ onLogRoll }) {
-  const { counts, adjustCount } = useTarredDevices()
+  const { adjustCount } = useTarredDevices()
   const [element, setElement] = useState(elements[0])
-  const [deviceUsage, setDeviceUsage] = useState(EMPTY_USAGE)
+  const [deviceUsage, setDeviceUsage] = useState(createEmptyDeviceUsage)
   const [bonusSkill, setBonusSkill] = useState('')
   const [groupSkill, setGroupSkill] = useState('')
   const [errors, setErrors] = useState({})
 
-  const computedRoll = useMemo(
-    () =>
-      TARRED_DEVICE_TYPES.reduce(
-        (total, device) => total + rollsFromDeviceUsage(deviceUsage[device.id].used, deviceUsage[device.id].matchesFocus),
-        0,
-      ),
-    [deviceUsage],
-  )
+  const computedRoll = totalRollsFromUsage(deviceUsage)
 
   function updateUsage(deviceId, patch) {
     setDeviceUsage((prev) => ({ ...prev, [deviceId]: { ...prev[deviceId], ...patch } }))
@@ -70,7 +59,7 @@ export function LogRollForm({ onLogRoll }) {
       if (used > 0) adjustCount(device.id, -used)
     })
 
-    setDeviceUsage(EMPTY_USAGE)
+    setDeviceUsage(createEmptyDeviceUsage())
     setBonusSkill('')
     setGroupSkill('')
     setErrors({})
@@ -91,36 +80,7 @@ export function LogRollForm({ onLogRoll }) {
           </select>
         </label>
 
-        <div className="device-usage-fields">
-          {TARRED_DEVICE_TYPES.map((device) => {
-            const usage = deviceUsage[device.id]
-            const remaining = (counts[device.id] ?? 0) - (Number(usage.used) || 0)
-            return (
-              <div className="device-usage-field" key={device.id}>
-                <label>
-                  {device.name} used
-                  <input
-                    type="number"
-                    min={0}
-                    value={usage.used}
-                    onChange={(e) => updateUsage(device.id, { used: Math.max(0, Number(e.target.value) || 0) })}
-                  />
-                </label>
-                <label className="device-usage-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={usage.matchesFocus}
-                    onChange={(e) => updateUsage(device.id, { matchesFocus: e.target.checked })}
-                  />
-                  Matches weapon focus
-                </label>
-                <span className={remaining < 0 ? 'device-remaining device-remaining-negative' : 'device-remaining'}>
-                  {remaining} left in inventory
-                </span>
-              </div>
-            )
-          })}
-        </div>
+        <DeviceUsageFields usage={deviceUsage} onChange={updateUsage} />
         {errors.devices && <span className="field-error">{errors.devices}</span>}
 
         <div className="computed-roll">
