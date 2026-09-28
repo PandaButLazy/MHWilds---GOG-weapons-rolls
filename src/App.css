@@ -53,6 +53,37 @@
   overflow-y: auto;
 }
 
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 42;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-h);
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
 .sidebar-divider {
   height: 1px;
   background: var(--border);
@@ -680,4 +711,96 @@
 
 .btn-danger:hover {
   background: rgba(220, 38, 38, 0.1);
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    max-width: 80vw;
+    padding-top: 64px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 41;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 40;
+  }
+
+  .sidebar-link {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .content {
+    padding: 64px 16px 24px;
+  }
+
+  .device-currency-bar {
+    top: 12px;
+    right: 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: calc(100vw - 64px);
+  }
+
+  .device-currency-pill {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .weapon-page-title {
+    font-size: 20px;
+  }
+
+  .target-fields,
+  .device-usage-fields {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .target-fields input,
+  .device-usage-field {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .log-roll-panel form {
+    width: 100%;
+  }
+
+  .log-roll-element select {
+    width: 100%;
+  }
+
+  .modal-actions {
+    flex-wrap: wrap;
+  }
+
+  .modal-actions button {
+    flex: 1;
+  }
 }
